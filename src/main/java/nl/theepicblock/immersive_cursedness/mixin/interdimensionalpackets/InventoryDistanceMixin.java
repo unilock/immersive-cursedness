@@ -1,12 +1,10 @@
 package nl.theepicblock.immersive_cursedness.mixin.interdimensionalpackets;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.*;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Clearable;
-import net.minecraft.util.math.BlockPos;
 import nl.theepicblock.immersive_cursedness.PlayerInterface;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

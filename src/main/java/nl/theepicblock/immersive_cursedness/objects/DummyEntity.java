@@ -12,18 +12,16 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.Heightmap;
 import net.minecraft.world.BlockLocating;
 import net.minecraft.world.TeleportTarget;
 import net.minecraft.world.World;
 import net.minecraft.world.border.WorldBorder;
-import net.minecraft.world.dimension.NetherPortal;
 import net.minecraft.world.dimension.DimensionType;
+import net.minecraft.world.dimension.NetherPortal;
 import nl.theepicblock.immersive_cursedness.Util;
 
 import java.util.Optional;
 
-@SuppressWarnings("EntityConstructor")
 public class DummyEntity extends Entity {
     public DummyEntity(World world, BlockPos pos) {
         super(EntityType.BLAZE, world);
@@ -82,8 +80,7 @@ public class DummyEntity extends Entity {
                     return null;
                 }
 
-                var entity = (Entity) (Object) this;
-                return NetherPortal.getNetherTeleportTarget(destination, portalPosA.get(), axis2, vec3d2, entity, this.getVelocity(), this.getYaw(), this.getPitch());
+                return NetherPortal.getNetherTeleportTarget(destination, portalPosA.get(), axis2, vec3d2, this, this.getVelocity(), this.getYaw(), this.getPitch());
             } else {
                 return null;
             }

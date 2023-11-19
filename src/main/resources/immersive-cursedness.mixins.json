@@ -4,7 +4,6 @@
   "package": "nl.theepicblock.immersive_cursedness.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "EntityPositionS2CPacketAccessor",
     "MixinPlayerEntity",
     "MixinServerPlayerEntity",
     "PortalForcerMixin",

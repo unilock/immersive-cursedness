@@ -1,11 +1,10 @@
 package nl.theepicblock.immersive_cursedness.objects;
 
-import it.unimi.dsi.fastutil.ints.*;
-import net.minecraft.block.BlockState;
+import it.unimi.dsi.fastutil.ints.Int2IntMap;
+import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.util.math.BlockPos;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import static nl.theepicblock.immersive_cursedness.objects.BlockCache.CHUNK_SIZE;
 import static nl.theepicblock.immersive_cursedness.objects.BlockCache.DEFAULT_MAP_SIZE;

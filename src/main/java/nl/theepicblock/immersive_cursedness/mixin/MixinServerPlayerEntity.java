@@ -4,7 +4,6 @@ import com.mojang.authlib.GameProfile;
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.network.encryption.PlayerPublicKey;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
@@ -16,12 +15,10 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@SuppressWarnings("PointlessBooleanExpression")
 @Mixin(ServerPlayerEntity.class)
-public abstract class MixinServerPlayerEntity extends MixinPlayerEntity implements PlayerInterface {
-	public MixinServerPlayerEntity(World world, BlockPos pos, float yaw, GameProfile profile, PlayerPublicKey publicKey) {
+public abstract class MixinServerPlayerEntity extends PlayerEntity implements PlayerInterface {
+	public MixinServerPlayerEntity(World world, BlockPos pos, float yaw, GameProfile profile) {
 		super(world, pos, yaw, profile);
 	}
 
@@ -87,11 +84,5 @@ public abstract class MixinServerPlayerEntity extends MixinPlayerEntity implemen
 	@Override
 	public boolean immersivecursedness$getEnabled() {
 		return enabled;
-	}
-
-	@Override
-	public void handleGetMaxNetherPortalTime(CallbackInfoReturnable<Integer> cir) {
-		if (enabled)
-			cir.setReturnValue(1);
 	}
 }
