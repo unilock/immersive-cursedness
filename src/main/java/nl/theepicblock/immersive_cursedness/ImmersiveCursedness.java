@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -35,10 +36,10 @@ public class ImmersiveCursedness implements ModInitializer {
         CommandRegistrationCallback.EVENT.register((dispatcher, b, c) -> {
             dispatcher.register(CommandManager.literal("portal")
                     .then(CommandManager.literal("toggle").executes((context) -> {
-                        PlayerInterface pi = (PlayerInterface)context.getSource().getPlayer();
+                        PlayerInterface pi = (PlayerInterface) context.getSource().getPlayer();
                         pi.immersivecursedness$setEnabled(!pi.immersivecursedness$getEnabled());
-                        context.getSource().sendFeedback(() -> Text.literal("you have now "+ (pi.immersivecursedness$getEnabled() ? "enabled" : "disabled") +" immersive portals"), false);
-                        if (pi.immersivecursedness$getEnabled() == false) {
+                        context.getSource().sendFeedback(() -> Text.literal("Immersive Portals: ").append(pi.immersivecursedness$getEnabled() ? Text.literal("enabled").formatted(Formatting.GREEN) : Text.literal("disabled").formatted(Formatting.RED)), false);
+                        if (!pi.immersivecursedness$getEnabled()) {
                             Util.getManagerFromPlayer(context.getSource().getPlayer()).purgeCache();
                         }
                         return Command.SINGLE_SUCCESS;
